@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-
+import GameCard from './components/GameCard';
 import './App.css'
 
 function App() {
@@ -13,11 +13,10 @@ function App() {
   }
 
   return (
-    <>
-      <h1>Game Suggester</h1>
-      <button onClick={handleGetSuggestion}>Obter Sugestão</button>
-      {game && <div><h2>{game.name}</h2></div>}
-    </>
+    <div>
+      <button onClick={handleGetSuggestion}> Get Suggestion </button>
+      <GameCard game={game}/>
+    </div>
   )
 }
 
