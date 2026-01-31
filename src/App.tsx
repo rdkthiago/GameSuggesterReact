@@ -19,28 +19,33 @@ function App() {
 
   async function handleGetSuggestion() {
     const response = await axios.get(
-      "http://localhost:8080/api/games/suggestion", {
-      params:  {
-        genreId: selectedGenre || null
-      }
-    });
+      "http://localhost:8080/api/games/suggestion",
+      {
+        params: {
+          genreId: selectedGenre || null,
+        },
+      },
+    );
     console.log(response.data);
     setGame(response.data[0]);
   }
 
   return (
-    <div>
-      <select
-        value={selectedGenre}
-        onChange={(e) => setSelectedGenre(e.target.value)}
-      >
-        {GENRES.map((g) => (
-          <option key={String(g.id)} value={String(g.id)}>
-            {g.name}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleGetSuggestion}> Get Suggestion </button>
+    <div className="app-container">
+      <h1>What Game Should I Play?</h1>
+      <div className="controls">
+        <select
+          value={selectedGenre}
+          onChange={(e) => setSelectedGenre(e.target.value)}
+        >
+          {GENRES.map((g) => (
+            <option key={String(g.id)} value={String(g.id)}>
+              {g.name}
+            </option>
+          ))}
+        </select>
+        <button onClick={handleGetSuggestion}> Get Suggestion </button>
+      </div>
       <GameCard game={game} />
     </div>
   );

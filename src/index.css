@@ -1,0 +1,18 @@
+:root {
+  --bg-color: #0f0f0f;
+  --card-bg: #1f1f1f;
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --accent-color: #9146ff;
+  --accent-hover: #772ce8;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import './GameCard.css'
 
 interface Game {
   name: string;
@@ -20,8 +20,10 @@ function GameCard({ game }: { game: Game | null }) {
     return (
         <div className='game-card'>
             <img src={imageUrl} alt={game?.name} />
-            <h2>{game?.name}</h2>
-            <p>{game?.summary}</p>
+            <div className='card-content'>
+                <h2>{game?.name}</h2>
+                <p>{game?.summary}</p>
+            </div>
         </div>  
     );
 }
