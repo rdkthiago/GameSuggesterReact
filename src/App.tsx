@@ -5,10 +5,11 @@ import "./App.css";
 
 const GENRES = [
   { id: "", name: "All / Random" },
+  { id: 2, name: "Point-and-click" },
   { id: 4, name: "Fight" },
-  { id: 12, name: "RPG" },
   { id: 5, name: "Shooter" },
   { id: 10, name: "Racing" },
+  { id: 12, name: "RPG" },
   { id: 14, name: "Sports" },
   { id: 31, name: "Adventure" },
 ];
@@ -16,18 +17,25 @@ const GENRES = [
 function App() {
   const [game, setGame] = useState(null);
   const [selectedGenre, setSelectedGenre] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   async function handleGetSuggestion() {
-    const response = await axios.get(
-      "http://localhost:8080/api/games/suggestion",
-      {
-        params: {
-          genreId: selectedGenre || null,
+    setIsLoading(true);
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/api/games/suggestion",
+        {
+          params: {
+            genreId: selectedGenre || null,
+          },
         },
-      },
-    );
-    console.log(response.data);
-    setGame(response.data[0]);
+      );
+      setGame(response.data[0]);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -44,7 +52,7 @@ function App() {
             </option>
           ))}
         </select>
-        <button onClick={handleGetSuggestion}> Get Suggestion </button>
+        <button onClick={handleGetSuggestion} disabled={isLoading}> { isLoading ? 'Loading..' : 'Get Suggestion' } </button>
       </div>
       <GameCard game={game} />
     </div>
