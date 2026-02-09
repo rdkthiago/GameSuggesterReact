@@ -10,9 +10,8 @@ interface Game {
 
 function GameCard({ game }: { game: Game | null }) {
     let imageUrl = '';
-    console.log(game);
     if (game && game.cover && game.cover.url) {
-        imageUrl = "https:" + game.cover.url.replace('t_thumb', 't_cover_big');
+        imageUrl = "https:" + game.cover.url.replace('t_thumb', 't_1080p');
     }
     else {
         imageUrl = 'https://via.placeholder.com/264x374?text=No+Image';

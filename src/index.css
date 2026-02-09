@@ -10,8 +10,8 @@
 body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-primary);
+  background: url("./assets/game_background.png");
+  backdrop-filter: blur(15px); 
   display: flex;
   justify-content: center;
   min-height: 100vh;
