@@ -3,6 +3,8 @@
   max-width: 500px;
   padding: 2rem;
   text-align: center;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 h1 {
